@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestCase07 extends Utility {
 
-	public static void main(String[] args) throws InterruptedException  {
+	public static void main(String[] args) throws Exception  {
 		launch_Home();
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		login();

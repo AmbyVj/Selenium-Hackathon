@@ -33,7 +33,7 @@ public class TestCase34 extends  Utility{
 		 driver.findElement(By.xpath("//li[@id='aboutTab']")).click();
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		 driver.findElement(By.xpath("//input[@id='lastName']")).clear();
-		 driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys("Abcd");
+		 driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys(System.getProperty("UserLastName"));
 		 //driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys("T");
 		 System.out.println("updated the last name");		  
 		 waitExplicitly(10,driver.findElement(By.xpath("//*[@id='TabPanel']/div/div[2]/form/div/input[1]")));	

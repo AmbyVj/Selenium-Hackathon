@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class TestCase01 extends Utility{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		launch_Home();
 		System.out.println("Page is launched successfully");
 		//Click login();
@@ -17,10 +17,11 @@ public class TestCase01 extends Utility{
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		login.click();
 		//Enter user name & clear password & click login;
+		loadingPropertiesFile();
 		WebElement userName = driver.findElement(By.xpath("//input[@id='username']"));
 		waitExplicitly(10, userName);
 		userName.clear();
-		userName.sendKeys("ava@xyz.com");
+		userName.sendKeys(System.getProperty("userName"));
 		System.out.println("Entered user name.");
 		
 		WebElement pwd = driver.findElement(By.id("password"));

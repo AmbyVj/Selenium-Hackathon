@@ -1,24 +1,17 @@
 package TestCases;
 
-import java.awt.AWTException;
+
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.KeyDownAction;
-import org.openqa.selenium.support.ui.Select;
+
 
 public class TestCase14 extends Utility {
 
-	public static void main(String[] args) throws InterruptedException, AWTException {
+	public static void main(String[] args) throws Exception {
 		
 		//Launch & Login
 		launch_Home();
@@ -51,7 +44,7 @@ public class TestCase14 extends Utility {
 		driver.findElement(By.id("ext-gen154")).click();
 		//driver.findElement(By.xpath("//*[@id='ext-gen303']")).click();
 		driver.findElement(By.xpath("//*[@id='ext-comp-1045']")).clear();
-		driver.findElement(By.xpath("//*[@id='ext-comp-1045']")).sendKeys("1/8/2021");
+		driver.findElement(By.xpath("//*[@id='ext-comp-1045']")).sendKeys("1/18/2021");
 		Thread.sleep(2000);
 		Robot rob =new Robot();
 		rob.keyPress(KeyEvent.VK_ENTER);
@@ -65,25 +58,14 @@ public class TestCase14 extends Utility {
 		action.moveToElement(driver.findElement(By.id("ext-gen49"))).perform();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		
-	    driver.findElement(By.xpath("//input[@id='saveReportDlg_reportNameField']")).sendKeys("Report1");
+	    driver.findElement(By.xpath("//input[@id='saveReportDlg_reportNameField']")).sendKeys(System.getProperty("ReportName"));
 	    driver.findElement(By.xpath("//input[@id='saveReportDlg_DeveloperName']")).click();
-	    //driver.findElement(By.xpath("//input[@id='saveReportDlg_DeveloperName']")).sendKeys("AA");
-	    driver.findElement(By.xpath("//div[@class='x-form-element']/textarea")).sendKeys("Report run");
+	    //driver.findElement(By.xpath("//div[@class='x-form-element']/textarea")).sendKeys("Report run");
 	    Thread.sleep(2000);
-//	    driver.findElement(By.xpath("//div[@class='x-tool x-tool-close']")).click();
-//		
-//		 driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-//		 action.moveToElement(driver.findElement(By.xpath("//div[@class='x-window-footer x-panel-btns']"))).perform();
-//	
+
 //		 driver.findElement(By.xpath("//*[@id='dlgSaveAndRun']/tbody")).click();		
 		 driver.findElement(By.xpath("//button[contains(text(),'Save and Run Report')]")).click(); 
 			
-//	     String str = "//div[@id='ext-comp-1070']/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr[2]/td[2]/em/button";
-//	     driver.findElement(By.xpath(str));
-//		 driver.findElement(By.xpath("//*[@id='dlgSaveAndRun']/tbody/tr[2]/td[2]/em/button")).click();
-//		 driver.findElement(By.xpath("//*[@class=' x-btn-text']")).click();
-	    
-	    
 		System.out.println("Saved & Run Report with Report Name & Unique Name ");
 		
 		quitBrowser();

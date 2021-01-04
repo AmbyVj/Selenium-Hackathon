@@ -1,9 +1,8 @@
 package TestCases;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -24,7 +23,7 @@ public class TestCase13 extends Utility{
 		driver.findElement(By.xpath("//a[contains(text(),'Merge Accounts')]")).click();
 		
 		waitExplicitly(10, driver.findElement(By.id("srch")));
-		driver.findElement(By.id("srch")).sendKeys("Ava");
+		driver.findElement(By.id("srch")).sendKeys(System.getProperty("AccountName"));
 		
 		waitExplicitly(10, driver.findElement(By.xpath("//input[@value='Find Accounts']")));
 		driver.findElement(By.xpath("//input[@value='Find Accounts']")).click();
@@ -39,7 +38,7 @@ public class TestCase13 extends Utility{
 		Thread.sleep(1000);
 		Alert alert = driver.switchTo().alert();
 		Thread.sleep(1000);
-		alert.accept();
+		//alert.accept();
 		System.out.println("Two Accounts names of 'Ava' are merged successfully");
 		
 		//driver.close();

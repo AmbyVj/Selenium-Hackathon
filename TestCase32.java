@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class TestCase32 extends Utility{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		//Launch & Login
 		launch_Home();
@@ -19,10 +19,10 @@ public class TestCase32 extends Utility{
 		driver.findElement(By.xpath("//input[@value=' New ']")).click();
 		
 		//Edit -Enter(Last Name - Indian, Account Name-Global Media)
-		driver.findElement(By.xpath("//*[@id='name_lastcon2']")).sendKeys("Indian");
+		driver.findElement(By.xpath("//*[@id='name_lastcon2']")).sendKeys(System.getProperty("ContactLastName"));
 				
 		//Search the Accounts & [Search & get it from new window];
-		driver.findElement(By.xpath("//input[@id='con4']")).sendKeys("Global");
+		driver.findElement(By.xpath("//input[@id='con4']")).sendKeys(System.getProperty("ContactAccount"));
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		
 		//Click on 'save & new' button

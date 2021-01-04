@@ -1,7 +1,6 @@
 package TestCases;
 
-import java.awt.AWTException;
-import java.awt.Robot;
+
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +12,7 @@ import org.openqa.selenium.By;
 
 public class TestCase08 extends Utility{
 
-	public static void main(String[] args) throws InterruptedException, AWTException {
+	public static void main(String[] args) throws Exception {
 		//Launch url & login
 		launch_Home();
 		login();

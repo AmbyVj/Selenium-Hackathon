@@ -1,22 +1,15 @@
 package TestCases;
 
-
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 
 
 public class TestCase16 extends Utility {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception {
 		
 		launch_Home();
 		login();
@@ -29,7 +22,7 @@ public class TestCase16 extends Utility {
 		
 		driver.findElement(By.xpath("//*[@id='hotlist']/table/tbody/tr/td[2]/input")).click();
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-		driver.findElement(By.id("opp3")).sendKeys("Tech");
+		driver.findElement(By.id("opp3")).sendKeys(System.getProperty("OpportunityName"));
 		
 		
 		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);

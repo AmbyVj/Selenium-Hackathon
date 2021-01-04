@@ -1,13 +1,11 @@
 package TestCases;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
 public class TestCase27 extends Utility {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		//launch & login
 		launch_Home();

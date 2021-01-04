@@ -1,9 +1,7 @@
 package TestCases;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 public class TestCase24 extends Utility{
 
@@ -23,8 +21,8 @@ public class TestCase24 extends Utility{
 			    
 			    //Enter Last name & Company name & select lead status;
 			    waitExplicitly(10,driver.findElement(By.id("name_lastlea2")));
-			    driver.findElement(By.id("name_lastlea2")).sendKeys("ABCD");
-			    driver.findElement(By.id("lea3")).sendKeys("ABCD");
+			    driver.findElement(By.id("name_lastlea2")).sendKeys(System.getProperty("CompanyName"));
+			    driver.findElement(By.id("lea3")).sendKeys(System.getProperty("CompanyName"));
 			    Thread.sleep(1000);
 
 			    saveClick();

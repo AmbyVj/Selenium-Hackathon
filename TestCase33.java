@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class TestCase33 extends Utility {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		//launch & login
 				launch_Home();

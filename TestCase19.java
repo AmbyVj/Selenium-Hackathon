@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestCase19 extends Utility {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception {
 		//Launch & Login
 		launch_Home();
 		login();

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class TestCase04 extends Utility{
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws Exception  {
 		
 		//Launch Home & login with user name & click 'Forgot Password'
 		launch_Home();

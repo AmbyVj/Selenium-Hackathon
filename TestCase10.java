@@ -5,12 +5,11 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class TestCase10 extends Utility{
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception {
 		//Launch & Login;
 		launch_Home();
 		login();
@@ -25,7 +24,7 @@ public class TestCase10 extends Utility{
 		driver.findElement(By.xpath("//input[@name = 'new']")).click();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		
-		driver.findElement(By.id("acc2")).sendKeys("Ava");
+		driver.findElement(By.id("acc2")).sendKeys(System.getProperty("AccountName"));
 		WebElement type = driver.findElement(By.id("acc6"));
 		Select sel = new Select(type);
 		sel.selectByVisibleText("Technology Partner");

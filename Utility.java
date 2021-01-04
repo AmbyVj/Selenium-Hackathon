@@ -1,6 +1,8 @@
 package TestCases;
 
+import java.io.FileInputStream;
 import java.util.Iterator;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -15,40 +17,54 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Utility {
 public static WebDriver driver;
 	
-	public static void launch_Home() {
+	public static void launch_Home() throws Exception {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\vijay\\chromedriver.exe");
 		driver =  new ChromeDriver();
-		driver.manage().window().maximize();		
-		driver.get("https://www.salesforce.com/");
+		driver.manage().window().maximize();
+		loadingPropertiesFile();
+		driver.get(System.getProperty("url"));
 	}
 	
+	public static void loadingPropertiesFile() throws Exception {
+		//Load the input from property file. Set(key:Value) & get the runtime properties
+		//String sPath = System.getProperty("user.dir")+"/Environment.properties";
+		String sPath = "C:\\Users\\vijay\\eclipse-workspace\\SalesForce\\src\\TestCases\\Environment.properties";
+		FileInputStream fileInp = new FileInputStream(sPath);
+		Properties prop = new Properties();
+		prop.load(fileInp);
+		System.getProperties().putAll(prop);
+		//System.out.println("login name : "+System.getProperty("userName"));
+		
+	}
 	public static void waitExplicitly(int seconds, WebElement ele) {
 		WebDriverWait wait =  new WebDriverWait(driver, seconds);
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
 	
-	public static void login() {
+	public static void login() throws Exception {
+		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		waitExplicitly(10, driver.findElement(By.xpath("//a[contains(text(),'Login')]")));
 		WebElement login = driver.findElement(By.xpath("//a[contains(text(),'Login')]"));
 		login.click();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		loadingPropertiesFile();
 		waitExplicitly(10, driver.findElement(By.xpath("//input[@id='username']")));
 		WebElement userName = driver.findElement(By.xpath("//input[@id='username']"));
-		userName.clear();
-		userName.sendKeys("ava@xyz.com");
+		userName.clear();		
+		userName.sendKeys(System.getProperty("userName"));
 		WebElement pwd = driver.findElement(By.id("password"));
 		pwd.clear();
-		pwd.sendKeys("ucandoit123");
+		pwd.sendKeys(System.getProperty("password"));
 		
 		driver.findElement(By.id("Login")).click();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		//waitExplicitly(20, driver.findElement(By.xpath("//*[@id=\"home_Tab\"]/a")));	
+		//waitExplicitly(20, driver.findElement(By.xpath("//*[@id='home_Tab']/a")));	
 		System.out.println("Logged In");
 		
 	}
 	
-	public static void viewDropDown(String str) throws InterruptedException {
+	public static void viewDropDown(String str) throws Exception {
 				//Select view drop down & click go;
 				waitExplicitly(10, driver.findElement(By.xpath("//*[@id='fcf']")));
 				driver.findElement(By.xpath("//*[@id='fcf']")).click();
@@ -59,17 +75,17 @@ public static WebDriver driver;
 				driver.findElement(By.xpath("//input[@value=' Go! ']")).click();
 				Thread.sleep(1000);
 	}
-	public static void windowHandles(String str) throws InterruptedException {     
+	public static void windowHandles(String str) throws Exception {     
         
         //Get handles of the windows
-        String mainWindowHandle = driver.getWindowHandle();
+        String mainWindow = driver.getWindowHandle();
         Set<String> allWindowHandles = driver.getWindowHandles();
         Iterator<String> iterator = allWindowHandles.iterator();
         
         // fetch the child window handle
         while (iterator.hasNext()) {
         	String childWindow = iterator.next();
-            if (!mainWindowHandle.equalsIgnoreCase(childWindow)) {
+            if (!mainWindow.equalsIgnoreCase(childWindow)) {
             	
                 driver.switchTo().window(childWindow);
                 driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='searchFrame']")));
@@ -89,7 +105,7 @@ public static WebDriver driver;
             }
         }
        
-        driver.switchTo().window(mainWindowHandle);
+        driver.switchTo().window(mainWindow);
 }
 	
 	

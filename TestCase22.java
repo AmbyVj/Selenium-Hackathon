@@ -25,7 +25,7 @@ public class TestCase22 extends Utility{
 				Select view = new Select(driver.findElement(By.xpath("//select[@id='fcf']")));
 				view.selectByVisibleText("Today's Leads");
 				System.out.println("Selected Today's Leads page");
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 				
 				view.selectByVisibleText("My Unread Leads");
 				System.out.println("My Unread Leads page");
@@ -49,15 +49,16 @@ public class TestCase22 extends Utility{
 				//quitBrowser();
 	}
 	
-	public static void loginHere() {
+	public static void loginHere() throws Exception {
+		loadingPropertiesFile();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		waitExplicitly(10, driver.findElement(By.xpath("//input[@id='username']")));
 		WebElement userName = driver.findElement(By.xpath("//input[@id='username']"));
 		userName.clear();
-		userName.sendKeys("ava@xyz.com");
+		userName.sendKeys(System.getProperty("userName"));
 		WebElement pwd = driver.findElement(By.id("password"));
 		pwd.clear();
-		pwd.sendKeys("ucandoit123");
+		pwd.sendKeys(System.getProperty("password"));
 		
 		driver.findElement(By.id("Login")).click();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
